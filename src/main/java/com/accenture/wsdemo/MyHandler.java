@@ -17,7 +17,8 @@ public class MyHandler extends TextWebSocketHandler {
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         // The WebSocket has been opened
         // I might save this session object so that I can send messages to it outside of this method
- 
+    	System.out.println("Session estabilished: " + session.getId());
+    	
         // Let's send the first message
         session.sendMessage(new TextMessage("You are now connected to the server. This is the first message."));
     }
