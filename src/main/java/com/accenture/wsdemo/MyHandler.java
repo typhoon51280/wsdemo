@@ -27,7 +27,7 @@ public class MyHandler extends TextWebSocketHandler {
     protected void handleTextMessage(WebSocketSession session, TextMessage textMessage) throws Exception {
         // A message has been received
         System.out.println("Message received: " + textMessage.getPayload());
-        session.sendMessage(new TextMessage("[" + session.getId() +"]{" + textMessage.getPayload() + "}"));
+        session.sendMessage(new TextMessage("[" + session.getId() +"] - <" + textMessage.getPayload() + ">"));
     }
 	
 }
