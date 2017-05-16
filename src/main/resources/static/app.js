@@ -14,8 +14,8 @@ function setConnected(connected) {
 }
 
 function connect() {
-//    sock  = new SockJS('/ws');
-	sock = new WebSocket('ws://' + window.location.host + '/ws');
+    sock  = new SockJS('/ws');
+//	sock = new WebSocket('ws://' + window.location.host + '/ws');
     sock.onopen = function() {
         console.log('open');
         setConnected(true);
