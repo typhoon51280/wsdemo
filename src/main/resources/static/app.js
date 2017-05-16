@@ -3,6 +3,7 @@ var sock = null;
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
+    $("#send").prop("disabled", !connected);
     if (connected) {
         $("#conversation").show();
     }
@@ -13,7 +14,8 @@ function setConnected(connected) {
 }
 
 function connect() {
-    sock  = new SockJS('/ws');
+//    sock  = new SockJS('/ws');
+	sock = new WebSocket('ws://' + window.location.host + '/ws');
     sock.onopen = function() {
         console.log('open');
         setConnected(true);
@@ -25,6 +27,9 @@ function connect() {
     sock.onclose = function() {
         console.log('Close');
         setConnected(false);
+    };
+    sock.onerror = function(e) {
+        console.error('ws error:', e);
     };
 }
 
